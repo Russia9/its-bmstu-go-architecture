@@ -1,4 +1,4 @@
-package mongo
+package mongodb
 
 import (
 	"context"
@@ -12,7 +12,7 @@ type PostRepository struct {
 	collection *mongo.Collection
 }
 
-func NewPostRepository(db mongo.Database) *PostRepository {
+func NewPostRepository(db *mongo.Database) *PostRepository {
 	return &PostRepository{db.Collection("posts")}
 }
 

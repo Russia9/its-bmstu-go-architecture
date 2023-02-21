@@ -8,6 +8,7 @@ import (
 
 type Post struct {
 	ID          string `bson:"_id"`
+	Title       string
 	Content     string
 	Attachments []string
 
@@ -18,9 +19,9 @@ type Post struct {
 var ErrPostNotFound = errors.New("post not found")
 
 type PostUsecase interface {
-	Create(ctx context.Context, content string, attachments []string) (*Post, error)
+	Create(ctx context.Context, title string, content string, attachments []string) (*Post, error)
 	Get(ctx context.Context, id string) (*Post, error)
-	Update(ctx context.Context, id string, content string, attachments []string) (*Post, error)
+	Update(ctx context.Context, id string, title string, content string, attachments []string) (*Post, error)
 	Delete(ctx context.Context, id string) error
 }
 
