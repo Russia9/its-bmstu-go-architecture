@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: "blog"
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "superpassword"
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - "mongo_data:/data/db"
+
+volumes:
+  mongo_data:

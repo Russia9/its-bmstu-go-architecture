@@ -8,7 +8,7 @@ import (
 )
 
 func (p *PostDelivery) Get(c *gin.Context) {
-	get, err := p.uc.Get(c, c.GetString("id"))
+	get, err := p.uc.Get(c, c.Query("id"))
 	if errors.Is(err, domain.ErrPostNotFound) {
 		c.JSON(http.StatusNotFound, gin.H{
 			"error": "post not found",

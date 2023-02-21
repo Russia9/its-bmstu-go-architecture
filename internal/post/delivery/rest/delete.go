@@ -6,7 +6,7 @@ import (
 )
 
 func (p *PostDelivery) Delete(c *gin.Context) {
-	err := p.uc.Delete(c, c.GetString("id"))
+	err := p.uc.Delete(c, c.Query("id"))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

@@ -7,13 +7,13 @@ import (
 )
 
 type Post struct {
-	ID          string `bson:"_id"`
-	Title       string
-	Content     string
-	Attachments []string
+	ID          string   `json:"id" bson:"_id"`
+	Title       string   `json:"title"`
+	Content     string   `json:"content"`
+	Attachments []string `json:"attachments"`
 
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 var ErrPostNotFound = errors.New("post not found")

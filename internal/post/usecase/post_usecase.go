@@ -37,7 +37,7 @@ func (p *PostUsecase) Create(ctx context.Context, title string, content string, 
 }
 
 func (p *PostUsecase) Get(ctx context.Context, id string) (*domain.Post, error) {
-	post, err := p.Get(ctx, id)
+	post, err := p.repo.Get(ctx, id)
 	if err != nil {
 		return nil, errors.Wrap(err, "post repo")
 	}
@@ -45,8 +45,8 @@ func (p *PostUsecase) Get(ctx context.Context, id string) (*domain.Post, error) 
 	return post, nil
 }
 
-func (p *PostUsecase) Update(ctx context.Context, title string, id string, content string, attachments []string) (*domain.Post, error) {
-	post, err := p.Get(ctx, id)
+func (p *PostUsecase) Update(ctx context.Context, id string, title string, content string, attachments []string) (*domain.Post, error) {
+	post, err := p.repo.Get(ctx, id)
 	if err != nil {
 		return nil, errors.Wrap(err, "post repo")
 	}
@@ -67,5 +67,5 @@ func (p *PostUsecase) Update(ctx context.Context, title string, id string, conte
 }
 
 func (p *PostUsecase) Delete(ctx context.Context, id string) error {
-	return errors.Wrap(p.Delete(ctx, id), "post repo")
+	return errors.Wrap(p.repo.Delete(ctx, id), "post repo")
 }
